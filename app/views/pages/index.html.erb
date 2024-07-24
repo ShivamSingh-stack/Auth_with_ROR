@@ -1,0 +1,16 @@
+<% if current_user %>
+  <h1>Welcome, <%= current_user.name %></h1>
+  <%= link_to 'Log out', user_session_path(current_user), data: { turbo_method: :delete } %><br>
+  <%= link_to 'Articles', articles_path %><br>
+  <li><%= link_to "Delete", user_path(current_user), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+<% else %>
+  <h1>This is the index page</h1>
+  <%= link_to 'Login', new_user_session_path %><br>
+  <%= link_to 'Sign Up', users_path %><br>
+
+<% end %>
+<%= link_to 'Secret page', '/pages/secret' %>
+
